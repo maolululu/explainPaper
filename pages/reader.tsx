@@ -146,7 +146,7 @@ import React, {
 
 
         checkIfSaved(filePath).then((res) => {
-          setIsSaved(res);
+          setIsSaved(res!);
         });
         parsePdf(filePath).then((res) => {
           if (res) {
@@ -313,8 +313,8 @@ import React, {
           {
             file_name: fileName,
             path: filePath,
-            email: user.email,
-            user_id: user.id,
+            email: user!.email,
+            user_id: user!.id,
           },
         ]);
   
@@ -337,7 +337,7 @@ import React, {
       }
     };
   
-    const messagesEndRef = useRef(null);
+    const messagesEndRef = useRef<null | HTMLDivElement>(null);
     const scrollToBottom = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
@@ -399,7 +399,7 @@ import React, {
   
     // #region New PDF Reader
     const [pageNumber, setPageNumber] = useState(1);
-    const [numPages, setNumPages] = useState(null);
+    const [numPages, setNumPages] = useState<number|null>(null);
     const [zoom, setZoom] = useState(1);
     const [showSearch, setShowSearch] = useState<boolean>(false);
     const [showOutline, setShowOutline] = useState<boolean>(false);
@@ -660,7 +660,7 @@ import React, {
                     className="z-2 overflow-x-scroll w-full"
                     onMouseUpCapture={() => {
                       if (filePath && pdfText) {
-                        if (window.getSelection().toString()) {
+                        if (window.getSelection()!.toString()) {
                           const highlight = window.getSelection()?.toString();
                           const paragraph = getParagraph(
                             pdfText,
@@ -670,7 +670,7 @@ import React, {
   
                           setHighlightedString(highlight || highlightedString);
   
-                          if (highlight.length > 1) {
+                          if (highlight!.length > 1) {
                             fetchApiExplanation(
                               paragraph as string,
                               highlight as string
@@ -791,7 +791,7 @@ import React, {
                           <div className="w-1/3 absolute top-14 border border-1 border-gray-300 shadow-sm left-2 z-10 max-h-[calc(100vh-56px)] overflow-y-auto bg-gray-200 rounded-md overflow-scroll py-4">
                             <Outline
                               onItemClick={onItemClick}
-                              className={styles.outline}
+                              //className={styles.outline}
                             />
                           </div>
                         )}

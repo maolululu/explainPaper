@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import LogRocket from "logrocket";
+//import LogRocket from "logrocket";
 
 //import Navbar from "../Navbar";
 import Header from "../Header";
@@ -8,9 +8,9 @@ import { useUser } from "../../lib/user";
 export function SiteLayout({ children }) {
   const { user } = useUser();
 
-  LogRocket.identify(user?.id, {
-    email: user?.email,
-  });
+  // LogRocket.identify(user?.id, {
+  //   email: user?.email,
+  // });
 
   return (
     <div

@@ -21,7 +21,7 @@ const Upload = (props: Props) => {
   const [uploadModal, setUploadModal] = useState(false);
 
   const [pdfName, setPdfName] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
   function handleClick() {
@@ -77,7 +77,7 @@ const Upload = (props: Props) => {
       let temp_name = link.split("/").pop();
       // await array buffer
 
-      let file = new File([data], temp_name, metadata);
+      let file = new File([data], temp_name as string, metadata);
       console.log(file);
       setUrlLoading(false);
       return file;
@@ -130,7 +130,7 @@ const Upload = (props: Props) => {
     // upload file to supabase storage
     const { data: fileData, error: uploadError } = await supabase.storage
       .from("pdf-files")
-      .upload("user_files/" + `${user.email}/` + slug, selectedFile);
+      .upload("user_files/" + `${user!.email}/` + slug, selectedFile);
 
     if (!fileData && uploadError.message !== "The resource already exists") {
       alert(

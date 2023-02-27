@@ -11,7 +11,7 @@ const Mypdfs = () => {
 
   const { user } = useUser();
 
-  const [pdfs, setPdfs] = useState([]);
+  const [pdfs, setPdfs] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
 
@@ -23,7 +23,7 @@ const Mypdfs = () => {
     const { data, error } = await supabase
       .from("papers")
       .select("path, file_name")
-      .eq("user_id", user.id);
+      .eq("user_id", user!.id);
 
     if (error) {
       console.error("Get papers error", error);
@@ -37,7 +37,7 @@ const Mypdfs = () => {
     if (user && pdfs.length === 0) {
       getUserPDFs().then((data) => {
         // reverse order so most recent is first
-        setPdfs(data.reverse());
+        setPdfs(data!.reverse());
       });
     }
   }, [user]);

@@ -65,7 +65,7 @@ export default function Home() {
   }
 
   const [pdfName, setPdfName] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
   // handles pdf drop
@@ -104,7 +104,7 @@ export default function Home() {
     // upload file to supabase storage
     const { data: fileData, error: uploadError } = await supabase.storage
       .from("pdf-files")
-      .upload("user_files/" + `${user.email}/` + slug, selectedFile);
+      .upload("user_files/" + `${user!.email}/` + slug, selectedFile);
 
     if (!fileData && uploadError.message !== "The resource already exists") {
       alert(
@@ -148,7 +148,7 @@ export default function Home() {
         type: "application/pdf",
       };
       let temp_name = link.split("/").pop();
-      let file = new File([data], temp_name, metadata);
+      let file = new File([data], temp_name!, metadata);
       setUrlLoading(false);
       return file;
     } catch (error) {

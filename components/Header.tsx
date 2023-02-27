@@ -43,7 +43,7 @@ const Header = () => {
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
               <div className="flex items-center justify-center w-10 h-10 ml-3 text-center text-white rounded-full cursor-pointer bg-green-700/70">
-                {user.email[0].toUpperCase()}
+                {user.email![0].toUpperCase()}
               </div>
             </DropdownMenu.Trigger>
 

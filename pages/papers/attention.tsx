@@ -22,11 +22,11 @@ const Attention = () => {
       });
     } else {
       // Get this user's anonymous ID from localStorage, or make a new one
-      anonymousID = localStorage.getItem("anonymousID");
-      if (!anonymousID) {
-        anonymousID = Math.random().toString(36).substring(7);
-        localStorage.setItem("anonymousID", anonymousID);
-      }
+      // anonymousID = localStorage.getItem("anonymousID");
+      // if (!anonymousID) {
+      //   anonymousID = Math.random().toString(36).substring(7);
+      //   localStorage.setItem("anonymousID", anonymousID);
+      // }
 
       // console.log("Identifying to June", anonymousID);
 
@@ -385,7 +385,7 @@ Question: `
     return res.data.data;
   };
 
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -483,7 +483,7 @@ Question: `
                           fetchApiExplanation(
                             paragraph.text as string,
                             highlight,
-                            user?.id
+                            user!?.id
                           ).then((resp) => {
                             // console.log("Tracking");
                             analytics.track({
