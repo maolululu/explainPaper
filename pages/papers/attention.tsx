@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import axios from "axios";
-axios.defaults.baseURL = 'http://127.0.0.1:80';
+axios.defaults.baseURL = 'http://47.113.194.193:3000';
 import { ChatFeed, Message } from "react-chat-ui";
 import analytics from "../../lib/analytics";
 import { useUser } from "../../lib/user";
