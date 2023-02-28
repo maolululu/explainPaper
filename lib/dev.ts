@@ -8,8 +8,8 @@ export default function isDev() {
       path = `/${path}`;
     }
     if (isDev()) {
-      return `http://localhost:3000${path}`;
+      return `https://explain-paper.cn${path}`;
     }
-    return `https://www.explainpaper.com${path}`;
+    return `https://explain-paper.cn${path}`;
   };
   
