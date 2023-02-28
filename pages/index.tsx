@@ -190,6 +190,8 @@ export default function Home() {
           name="description"
           content="A better way to read academic papers."
         />
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+          
         <link rel="icon" href="/logo.png" />
       </Head>
 
